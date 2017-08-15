@@ -7,13 +7,20 @@ describe("Roman Numeral Tests", function () {
     
     it("check1", function(done) {
         checkVal("I", 1);
+        checkVal("II", 2);
+        checkVal("III", 3);
+        checkVal("IV", 4);
+        checkVal("V", 5);
+        checkVal("VI", 6);
+        checkVal("VII", 7);
+        checkVal("VIII", 8);
+        checkVal("IX", 9);
         done();
     });
 
-    it("check2", function(done) {
-        checkVal("II", 2);
-        done();
-    });
+  
+    
+   
     
      function checkVal(expected, input) {
         var instanceOne = new showRomanNum();
