@@ -6,12 +6,18 @@ var showRomanNum = require('./Roman.js');
 describe("Roman Numeral Tests", function () {
     
     it("check1", function(done) {
-        
-         var instanceOne = new showRomanNum();
-         var result = instanceOne.printMyInput(1);
-        
-        assert(result == "I", "FAILED");
+        checkVal("I", 1);
         done();
     });
-   
+
+    it("check2", function(done) {
+        checkVal("II", 2);
+        done();
+    });
+    
+     function checkVal(expected, input) {
+        var instanceOne = new showRomanNum();
+        var result = instanceOne.printMyInput(input);
+        assert(expected === result, "Input: " + input + " Failed, result was " + result);
+    }
 });
