@@ -111,18 +111,32 @@ describe("Roman Numeral Tests", function() {
         }
     );
 
- 
-    it("logger write mock", 
-		function() {
-			//fakes setup 
-			var stubWrite = sinon.stub(logger, "Write");
-			
-			checkVal("_VMMMDCCCLXXXVIII", 8888);
-			
-			assert.equal(stubWrite.callCount, 2, "Should be 2");
-			console.log("Has been mocked");
-		}
-	);
+
+    it("logger write mock",
+        function() {
+            //fakes setup 
+            var stubWrite = sinon.stub(logger, "Write");
+
+            checkVal("_VMMMDCCCLXXXVIII", 8888);
+
+            assert.equal(stubWrite.callCount, 2, "Should be 2");
+            console.log("Has been mocked");
+        }
+    );
+
+    it("logger write spy",
+        function() {
+            //fakes setup 
+            var spyWrite = sinon.spy(logger, "Write");
+
+            checkVal("_VMMMDCCCLXXXVIII", 8888);
+            console.log("Huh?");
+            assert.equal(spyWrite.callCount, 2, "Should be 2");
+            console.log("Has been spied upon");
+        }
+    );
+
+    //var spya = sinon.spy(f, 'a');
 
     function checkVal(expected, input) {
         var instanceOne = new showRomanNum(logger);
