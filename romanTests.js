@@ -2,8 +2,15 @@
 
 var assert = require('assert');
 var showRomanNum = require('./Roman.js');
+var Logger = require('./logger');
 
 describe("Roman Numeral Tests", function () {
+    var logger;
+    
+    beforeEach(function (done) {
+       logger = new Logger();
+       done(); 
+    });
     
     it("check1", function(done) {
         checkVal("I", 1);
@@ -54,12 +61,42 @@ describe("Roman Numeral Tests", function () {
         checkVal("_VMMMDCCCLXXXVIII", 8888);
         done();
     })
-  
     
-   
-    
+  	it("logger write dummy", 
+		function(done) {
+			//var f = new Logger();
+			//dummy setup
+			logger.Write = function() {
+				// actually do nothing here.  
+				// C will call B, and b will do nothing.  
+				// Success...allows c to run independently.
+			};
+			//actual test
+			//assert.equal(f.c(), 1, "Expecting one");
+			checkVal("_VMMMDCCCLXXXVIII", 8888);
+			//f.Write("x");
+			done();
+		}
+	)
+	
+   	it("logger write fake", 
+		function(done) {
+			//var f = new Logger();
+			//dummy setup
+			var x = "laurie";
+			logger.Write = function() {
+				return x;
+			};
+			//actual test
+			//assert.equal(f.c(), 1, "Expecting one");
+			logger.Write("xx");
+			//checkVal("_VMMMDCCCLXXXVIII", 8888);
+			done();
+		}
+	);
+	
      function checkVal(expected, input) {
-        var instanceOne = new showRomanNum();
+        var instanceOne = new showRomanNum(logger);
         var result = instanceOne.printMyInput(input);
         assert(expected === result, "Input: " + input + " Failed, result was " + result);
     }

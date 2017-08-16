@@ -1,8 +1,9 @@
-function Roman() {
-   
+function Roman(logger) {
+    this.logger = logger;
 }
 
 Roman.prototype.printMyInput = function (input) {
+   this.logger.Write(input);
    var str = input.toString();
    var pad = "0000";
    var ans = pad.substring(0,pad.length - str.length) + str;
@@ -10,9 +11,10 @@ Roman.prototype.printMyInput = function (input) {
    var d3 = Roman.prototype.transform(ans.charAt(1),"C","D","M");
    var d2 = Roman.prototype.transform(ans.charAt(2),"X","L","C");
    var d1 = Roman.prototype.transform(ans.charAt(3),"I","V","X");
+   this.logger.Write(d4 + d3 + d2 + d1);
    return d4 + d3 + d2 + d1;
  
-}
+};
  
 Roman.prototype.transform = function (input,p1,p2,p3) { 
  
