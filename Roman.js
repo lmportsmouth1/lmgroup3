@@ -3,11 +3,26 @@ function Roman() {
 }
 
 Roman.prototype.printMyInput = function (input) {
+   var str = input.toString();
+   var pad = "0000";
+   var ans = pad.substring(0,pad.length - str.length) + str;
+   var d4 = Roman.prototype.transform(ans.charAt(0),"M","V","X");
+   var d3 = Roman.prototype.transform(ans.charAt(1),"C","D","M");
+   var d2 = Roman.prototype.transform(ans.charAt(2),"X","L","C");
+   var d1 = Roman.prototype.transform(ans.charAt(3),"I","V","X");
+   return d4 + d3 + d2 + d1;
  
- var p1 = "I";
- var p2 = "V";
- var p3 = "X";
+}
  
+Roman.prototype.transform = function (input,p1,p2,p3) { 
+ 
+ //var p1 = "I"
+ //var p2 = "V"
+ //var p3 = "X"
+ 
+ if (input == 0) {
+    return ""
+ }
  if (input == 1) {
      return p1;
  }

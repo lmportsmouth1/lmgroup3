@@ -17,6 +17,11 @@ describe("Roman Numeral Tests", function () {
         checkVal("IX", 9);
         done();
     });
+    
+    it("check49", function(done) {
+        checkVal("XLIX", 49);
+        done();
+    })
 
   
     
