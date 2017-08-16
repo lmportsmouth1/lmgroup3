@@ -29,6 +29,7 @@ describe("Roman Numeral Tests", function () {
     })
 
    it("check289", function(done) {
+       
         checkVal("CCLXXXIX", 289);
         done();
     })
@@ -37,6 +38,12 @@ describe("Roman Numeral Tests", function () {
         checkVal("MMDCCLXXXIX", 2789);
         done();
     })
+    
+   it("check9000", function(done) {
+        checkVal("M_X", 9000);
+        done();
+    })
+  
     
    
     
