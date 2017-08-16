@@ -95,6 +95,21 @@ describe("Roman Numeral Tests", function () {
 		}
 	);
 	
+		it("logger write stub", 
+		function(done) {
+			//var f = new Logger();
+			//dummy setup
+			logger.Write = function() {
+				console.log("Laurie");
+			};
+			//actual test
+			//assert.equal(f.c(), 1, "Expecting one");
+			logger.Write();
+			//checkVal("_VMMMDCCCLXXXVIII", 8888);
+			done();
+		}
+	);
+	
      function checkVal(expected, input) {
         var instanceOne = new showRomanNum(logger);
         var result = instanceOne.printMyInput(input);
